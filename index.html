@@ -67,7 +67,14 @@
 <body>
   <div class="container">
     <div class="riddle">
-      I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?
+      On a cold Winter night, down in the basement, <br>
+      An assortment of students, filled with excitement: <br>
+      One step to the left, 2 steps to the right, <br>
+      Swing your partner 'round all night. <br>
+      And when our muscles were screaming ouch, <br>
+      We took a seat on the great big couch. <br>
+      With hearts full of joy our eyes did meet, <br>
+      Here at our treasured ___ ____.
     </div>
     <input type="text" id="answer" class="answer-input" placeholder="Your answer here...">
     <br><br>
@@ -76,7 +83,7 @@
     <script>
       function checkAnswer() {
           const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
-          const correctAnswer = 'echo';
+          const correctAnswer = 'winter retreat';
           if (userAnswer === correctAnswer) {
           window.location.href = 'loading.html';
           } else {
