@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Lia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Great Vibes', cursive;
+      background-color: #fff0f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      background-image: url('https://www.transparenttextures.com/patterns/flower.png');
+      background-repeat: repeat;
+    }
+    .container {
+      border: 10px solid transparent;
+      padding: 20px;
+      border-image: url('https://i.imgur.com/n5OeX6v.png') 30 round;
+      background-color: white;
+      max-width: 600px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .riddle {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .answer-input {
+      font-family: serif;
+      font-size: 1em;
+      padding: 10px;
+      width: 80%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .flower {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      pointer-events: none;
+      background-image: url('https://purepng.com/public/uploads/thumbnail//love-heart-5yd.png'); /* replace with any flower PNG */
+      background-size: cover;
+      animation: floatUp 1s ease-out forwards;
+      z-index: 9999;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="riddle">
+      I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?
+    </div>
+    <input type="text" id="answer" class="answer-input" placeholder="Your answer here...">
+    <br><br>
+    <button onclick="checkAnswer()">Submit</button>
+
+    <script>
+      function checkAnswer() {
+          const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
+          const correctAnswer = 'echo';
+          if (userAnswer === correctAnswer) {
+          window.location.href = 'loading.html';
+          } else {
+          alert('Incorrect! Try again.');
+          }
+      }
+
+      document.addEventListener('click', function(event) {
+        for (let i = 0; i < 5; i++) {
+          const flower = document.createElement('div');
+          flower.className = 'flower';
+
+          const size = Math.random() * 20 + 20;
+          flower.style.width = `${size}px`;
+          flower.style.height = `${size}px`;
+
+          const offsetX = Math.random() * 100 - 50;
+          const offsetY = Math.random() * 30;
+
+          flower.style.left = `${event.pageX + offsetX}px`;
+          flower.style.top = `${event.pageY + offsetY}px`;
+
+          document.body.appendChild(flower);
+
+          setTimeout(() => {
+            flower.remove();
+          }, 1000);
+        }
+      });
+    </script>
+  </div>
+</body>
+</html>

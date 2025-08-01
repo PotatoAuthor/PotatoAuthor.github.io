@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Lia</title>
+  <style>
+    body {
+      background-color: #fff0f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      flex-direction: column;
+    }
+    .container {
+      border: 10px solid transparent;
+      padding: 20px;
+      border-image: url('https://i.imgur.com/n5OeX6v.png') 30 round;
+      background-color: white;
+      max-width: 600px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .flower {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      pointer-events: none;
+      background-image: url('https://purepng.com/public/uploads/thumbnail//love-heart-5yd.png'); /* replace with any flower PNG */
+      background-size: cover;
+      animation: floatUp 1s ease-out forwards;
+      z-index: 9999;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) scale(0.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="">
+        
+    </div>
+  </div>
+
+  <script>
+
+    document.addEventListener('click', function(event) {
+        for (let i = 0; i < 5; i++) {
+          const flower = document.createElement('div');
+          flower.className = 'flower';
+
+          const size = Math.random() * 20 + 20;
+          flower.style.width = `${size}px`;
+          flower.style.height = `${size}px`;
+
+          const offsetX = Math.random() * 100 - 50;
+          const offsetY = Math.random() * 30;
+
+          flower.style.left = `${event.pageX + offsetX}px`;
+          flower.style.top = `${event.pageY + offsetY}px`;
+
+          document.body.appendChild(flower);
+
+          setTimeout(() => {
+            flower.remove();
+          }, 1000);
+        }
+      });
+  </script>
+</body>
+</html>

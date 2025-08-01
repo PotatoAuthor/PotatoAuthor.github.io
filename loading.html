@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading...</title>
+  <style>
+    body {
+      background-color: #fff0f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      flex-direction: column;
+    }
+    .loader-container {
+      width: 80%;
+      max-width: 600px;
+      height: 30px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .loader-bar {
+      height: 100%;
+      width: 0%;
+      background-color: #4caf50;
+      transition: width 0.4s linear;
+    }
+    .loading-text-1 {
+      display: none;
+      font-size: 1.5em;
+      color: #333;
+      cursor: pointer;
+    }
+    .loading-text-2 {
+      display: none;
+      font-size: 1.5em;
+      color: #333;
+      cursor: pointer;
+    }
+    .loading-text-3 {
+      display: none;
+      font-size: 1.5em;
+      color: #333;
+      cursor: pointer;
+    }
+    .loading-text-4 {
+      display: none;
+      font-size: 1.5em;
+      color: #333;
+      cursor: pointer;
+    }
+    .loading-text-5 {
+      display: none;
+      font-size: 1.5em;
+      color: #333;
+      cursor: pointer;
+    }
+    .continue-text {
+      display: none;
+      font-size: 1.5em;
+      color: #333;
+      cursor: pointer;
+    }
+    .flower {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      pointer-events: none;
+      background-image: url('https://purepng.com/public/uploads/thumbnail//love-heart-5yd.png'); /* replace with any flower PNG */
+      background-size: cover;
+      animation: floatUp 1s ease-out forwards;
+      z-index: 9999;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) scale(0.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <img src="https://media.tenor.com/UXLmgQdkDesAAAAM/robert-bri.gif">
+  </div>
+  <div class="loader-container">
+    <div class="loader-bar" id="loaderBar"></div>
+  </div>
+  <div class="loading-text-1" id="loadingText1">Validating Answer</div>
+  <div class="loading-text-1" id="loadingText2">Charging up Romance Meter</div>
+  <div class="loading-text-1" id="loadingText3">Generating Cheesy Lines</div>
+  <div class="loading-text-1" id="loadingText4">Adding Gorgeous Photos</div>
+  <div class="loading-text-1" id="loadingText5">Finishing with a Sprinkle of Love</div>
+  <div class="continue-text" id="continueText">Click anywhere to continue</div>
+
+  <script>
+    let progress = 0;
+    const bar = document.getElementById('loaderBar');
+    const loading_text1 = document.getElementById('loadingText1');
+    const loading_text2 = document.getElementById('loadingText2');
+    const loading_text3 = document.getElementById('loadingText3');
+    const loading_text4 = document.getElementById('loadingText4');
+    const loading_text5 = document.getElementById('loadingText5');
+    const continue_text = document.getElementById('continueText');
+
+    const interval = setInterval(() => {
+      progress += 1;
+      bar.style.width = progress + '%';
+
+      if (progress >= 0) {
+        loading_text1.style.display = 'block';
+      }
+      if (progress >= 20) {
+        loading_text1.style.display = 'none';
+        loading_text2.style.display = 'block';
+      }
+      if (progress >= 40) {
+        loading_text2.style.display = 'none';
+        loading_text3.style.display = 'block';
+      }
+      if (progress >= 60) {
+        loading_text3.style.display = 'none';
+        loading_text4.style.display = 'block';
+      }
+      if (progress >= 80) {
+        loading_text4.style.display = 'none';
+        loading_text5.style.display = 'block';
+      }
+
+      if (progress >= 100) {
+        clearInterval(interval);
+        loading_text5.style.display = 'none';
+        continue_text.style.display = 'block';
+      }
+    }, 200);
+
+    document.body.addEventListener('click', () => {
+      if (progress >= 100) {
+        window.location.href = 'home.html';
+      }
+    });
+
+    document.addEventListener('click', function(event) {
+        for (let i = 0; i < 5; i++) {
+          const flower = document.createElement('div');
+          flower.className = 'flower';
+
+          const size = Math.random() * 20 + 20;
+          flower.style.width = `${size}px`;
+          flower.style.height = `${size}px`;
+
+          const offsetX = Math.random() * 100 - 50;
+          const offsetY = Math.random() * 30;
+
+          flower.style.left = `${event.pageX + offsetX}px`;
+          flower.style.top = `${event.pageY + offsetY}px`;
+
+          document.body.appendChild(flower);
+
+          setTimeout(() => {
+            flower.remove();
+          }, 1000);
+        }
+      });
+  </script>
+</body>
+</html>
